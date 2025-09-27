@@ -1,0 +1,139 @@
+目的
+
+グローバルナビ表記変更
+
+「AI相談」ボタンでチャット起動（/api/chat も必要なら実装）
+
+サービス・プラン本文の差し替え（新規コンポーネント）
+
+特定商取引法ページの追加＆フッターリンク更新
+
+SNSリンク：YouTube/Twitter削除、Facebook維持、note/Music&NFT 追加
+
+要件
+
+フレームワーク：Next.js（app router）+ Tailwind + shadcn/ui 前提
+
+既存の EnhancedAIChatbot があれば活用。なければ最小のチャットUIを設置してもよい。
+
+変更は型エラー0でビルド通過。必要に応じて軽いテストを追加。
+
+実装タスク
+
+ヘッダー文言変更
+
+app/components/enhanced-header.tsx（または相当箇所）のタイトル
+
+旧: ACEs Japan Care HUB → 新: ACEs Care HUB JAPAN
+
+AI相談ボタンでチャット起動
+
+app/page.tsx の CTA ボタンに onClick={() => setChatbotOpen(true)} を設定。
+
+chatbotOpen state と <EnhancedAIChatbot open={chatbotOpen} onOpenChange={setChatbotOpen} /> を配置。
+
+/api/chat が未実装なら app/api/chat/route.ts を作成（Edge でOK）。
+
+OpenAI: model: "gpt-4o-mini", temperature: 0.7。
+
+POST で { messages } を受け取り reply を返す。
+
+注意: OPENAI_API_KEY は Replit Secrets から参照（直書き禁止）。
+
+サービス・プラン差し替え
+
+app/components/services-plans.tsx を新規作成（shadcnの Card / Button 使用）。
+
+本文は以下の通りで実装（文言・価格・ボタン名を忠実に）：
+
+見出し「サービス・プラン一覧」「あなたのニーズに合わせた…表示価格は税込。」
+
+Care Compass AI Basic（価格/機能/おすすめ/「プランを選択」）
+
+Care Compass AI Family（価格/機能/「プランを選択」）
+
+Care Compass AI Professional（価格/機能/おすすめ/「プランを選択」）
+
+ACEs Portable HUB Enterprise（席数別の初期費用・月額、機能、ボタンは「お問い合わせ」）
+
+学割（Students & Educators）（対象/割引/適用方法/注、ボタン「学割で申し込む」）
+
+共通オプション（4項目）
+
+既存のサービス説明ブロックは削除 or コメントアウトし、<ServicesPlans /> を app/page.tsx に挿入。
+
+特定商取引法ページ追加
+
+app/legal/tokushoho/page.tsx を新規作成。内容は以下：
+
+見出し「特定商取引法に基づく表記」
+
+販売業者：株式会社Limelien
+
+運営責任者：田前秀樹
+
+所在地：〒151-0065 東京都渋谷区大山町27-21-3F
+
+電話番号：090-1362-0946
+
+メール：tamatixyan@gmail.com
+
+ホームページURL：https://v0-ace-s-japan-care-hub.vercel.app/
+
+販売価格：各商品・サービスのページに記載
+
+商品代金以外の必要料金：銀行振込手数料、インターネット接続料金等
+
+お支払い方法：クレジットカード（Stripe決済）、銀行振込
+
+お支払い時期：ご注文時に決済
+
+サービスの提供時期：決済完了後、即時またはイベント開催日
+
+返品・キャンセル：
+
+デジタルコンテンツ・寄付・会費：性質上、返品・返金不可
+
+イベント参加費：お客様都合のキャンセルは返金不可
+
+主催者都合の中止のみ全額返金
+
+表現、商品に関する注意書き：本サービスの効果・成果を保証するものではありません。
+
+体裁は prose クラス等で読みやすく。
+
+フッターのリンク更新
+
+YouTube と Twitter のリンク・表示を削除。
+
+Facebookは維持（既存URLを使用）。
+
+note を追加：https://note.com/clean_minnow118
+
+Music & NFT を追加：https://acescare.fanlink.tv/hidekitamae
+
+「特定商取引法に基づく表記」リンク を /legal/tokushoho へ追加。
+
+フッターが無い場合は簡易フッターを新設。
+
+受け入れ条件（Acceptance Criteria）
+
+右上プレビューでヘッダーが ACEs Care HUB JAPAN と表示される。
+
+「AI相談を始める」クリックでチャットUIが開き、メッセージ送信に応答が返る（Secrets の KEY 設定済み前提）。
+
+トップ中段のサービス説明が新しい 6ブロック（Basic / Family / Professional / Enterprise / 学割 / 共通オプション）に置換されている。
+
+/legal/tokushoho にアクセスすると、法定表記ページが表示される。
+
+フッターに Facebook / note / Music & NFT / 特定商取引法 が並び、YouTube / Twitter は無い。
+
+型エラー・ビルドエラーが0、Console に赤字が出ない。
+
+補足
+
+必要なら shadcn/ui の Card / Button の import パスを既存構成に合わせて調整。
+
+外部リンクは target="_blank" rel="noopener noreferrer" を付与。
+
+既存デザインに馴染むよう余白・グリッドは Tailwind で最小修正。
