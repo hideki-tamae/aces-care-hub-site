@@ -416,20 +416,17 @@ export default function HomePage() {
                     プライバシーポリシー
                   </Link>
                 </li>
+                <li>
+                  <Link href="/legal/tokushoho" className="hover:text-white transition-colors">
+                    特定商取引法に基づく表記
+                  </Link>
+                </li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-semibold mb-4">SNS</h4>
-              <div className="flex space-x-4">
-                <a
-                  href="https://x.com/hayFkShSxNRVh1q"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Twitter
-                </a>
+              <div className="flex flex-wrap gap-4">
                 <a
                   href="https://www.facebook.com/hidetarounosuke"
                   target="_blank"
@@ -439,12 +436,20 @@ export default function HomePage() {
                   Facebook
                 </a>
                 <a
-                  href="https://www.youtube.com/@ACEsCareHUB2025"
+                  href="https://note.com/clean_minnow118"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  YouTube
+                  note
+                </a>
+                <a
+                  href="https://acescare.fanlink.tv/hidekitamae"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Music & NFT
                 </a>
               </div>
             </div>
