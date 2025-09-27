@@ -8,6 +8,7 @@ import { Heart, Shield, Users, Star, ArrowRight, CheckCircle, Mail, Phone, Gift 
 import { EnhancedAIChatbot } from "@/components/enhanced-ai-chatbot"
 import Link from "next/link"
 import { EnhancedHeader } from "@/components/enhanced-header"
+import { ServicesPlans } from "@/app/components/services-plans"
 
 export default function HomePage() {
   const [chatbotOpen, setChatbotOpen] = useState(false)
@@ -134,119 +135,7 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">サービス・プラン一覧</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              あなたのニーズに合わせた、様々なケアプランをご用意しています
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Care Compass AI Lite */}
-            <Card className="border-blue-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <CardHeader>
-                <Badge className="w-fit bg-blue-100 text-blue-800">個人・家族向け</Badge>
-                <CardTitle className="text-xl text-blue-800">Care Compass AI Lite</CardTitle>
-                <CardDescription>基本的なAIケアサポート</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="mb-4">
-                  <span className="text-3xl font-bold text-blue-600">¥3,300</span>
-                  <span className="text-gray-600">/月（税込）</span>
-                </div>
-                <ul className="space-y-2 text-sm text-gray-700 mb-6">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    サイレントマジョリティダイアログ
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    レジリエンスチェック（月1回）
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    感情ログ＋簡易アドバイス
-                  </li>
-                </ul>
-                <Button className="w-full bg-blue-500 hover:bg-blue-600">プランを選択</Button>
-              </CardContent>
-            </Card>
-
-            {/* Care Compass AI Pro */}
-            <Card className="border-green-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative">
-              <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-500 text-white">
-                おすすめ
-              </Badge>
-              <CardHeader>
-                <Badge className="w-fit bg-green-100 text-green-800">個人・専門職向け</Badge>
-                <CardTitle className="text-xl text-green-800">Care Compass AI Pro</CardTitle>
-                <CardDescription>TIC対応の高度なケアサポート</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="mb-4">
-                  <span className="text-3xl font-bold text-green-600">¥5,500</span>
-                  <span className="text-gray-600">/月（税込）</span>
-                </div>
-                <ul className="space-y-2 text-sm text-gray-700 mb-6">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    トラウマインフォームドケア視点の提案
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    レジリエンス強化プログラム（週1）
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    緊急SOS通知
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    データ履歴の可視化
-                  </li>
-                </ul>
-                <Button className="w-full bg-green-500 hover:bg-green-600">プランを選択</Button>
-              </CardContent>
-            </Card>
-
-            {/* ACEs Portable HUB */}
-            <Card className="border-purple-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <CardHeader>
-                <Badge className="w-fit bg-purple-100 text-purple-800">団体・施設向け</Badge>
-                <CardTitle className="text-xl text-purple-800">ACEs Portable HUB</CardTitle>
-                <CardDescription>多職種連携管理システム</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="mb-4">
-                  <span className="text-2xl font-bold text-purple-600">¥110,000〜</span>
-                  <span className="text-gray-600 text-sm block">導入費 + 月額¥55,000〜</span>
-                </div>
-                <ul className="space-y-2 text-sm text-gray-700 mb-6">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    多職種連携管理
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    ACEs影響度共有
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    リアルタイムAI課題抽出
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    TIC研修モジュール
-                  </li>
-                </ul>
-                <Button className="w-full bg-purple-500 hover:bg-purple-600">お問い合わせ</Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+      <ServicesPlans />
 
       {/* Founder Section */}
       <section id="founder" className="py-20 px-4 bg-gradient-to-r from-blue-50 to-green-50">
