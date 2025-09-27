@@ -26,7 +26,7 @@ export function EnhancedHeader({ onChatbotOpen }: EnhancedHeaderProps) {
             </div>
             <div>
               <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 bg-clip-text text-transparent">
-                ACEs Japan Care HUB 🇯🇵
+                ACEs Care HUB JAPAN
               </h1>
               <p className="text-sm text-gray-600 font-medium tracking-wide">
                 ACEs×ヤングケアラー 統合ケアプラットフォーム
