@@ -499,9 +499,9 @@ export default function HomePage() {
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
                   <Heart className="w-5 h-5 text-white" />
                 </div>
-                <span className="font-bold">ACEs Care HUB</span>
+                <span className="font-bold">ACEs Care HUB Japan</span>
               </div>
-              <p className="text-gray-400 text-sm">安心してつながり、語り合い、回復できる社会をつくる</p>
+              <p className="text-gray-400 text-sm">安心してつながり、語り合い、回復できる<br></br>社会をつくる</p>
             </div>
 
             <div>
