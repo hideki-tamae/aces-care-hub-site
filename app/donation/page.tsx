@@ -25,7 +25,7 @@ export default function DonationPage() {
                 <Heart className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-800">ACEs Japan Care HUB🇯🇵</h1>
+                <h1 className="text-xl font-bold text-gray-800">ACEs Care HUB JAPAN</h1>
                 <p className="text-sm text-gray-600">寄付・サポーター</p>
               </div>
             </Link>
@@ -328,6 +328,15 @@ export default function DonationPage() {
             </CardHeader>
             <CardContent className="p-8">
               <div className="space-y-6">
+                <div className="rounded-md border border-amber-300 bg-amber-50 p-4 text-sm">
+                  <strong>お知らせ：</strong>
+                  現在オンライン決済は準備中です。お申し込み内容を送信いただくと、
+                  <a className="underline ml-1" href="mailto:tamatixyan@gmail.com">
+                    tamatixyan@gmail.com
+                  </a>{" "}
+                  より折り返しご連絡いたします。 料金の請求はこのページでは一切行われません。
+                </div>
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">寄付金額</label>
                   <div className="text-2xl font-bold text-pink-600">
@@ -382,7 +391,7 @@ export default function DonationPage() {
                   }
                 >
                   <CreditCard className="w-5 h-5 mr-2" />
-                  寄付を申し込む
+                  相談を申し込む
                 </Button>
 
                 <p className="text-xs text-gray-500 text-center">

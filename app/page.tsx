@@ -382,78 +382,90 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12 px-4">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
-                  <Heart className="w-5 h-5 text-white" />
-                </div>
-                <span className="font-bold">ACEs Care HUB Japan</span>
+          <div className="mb-8">
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
+                <Heart className="w-5 h-5 text-white" />
               </div>
-              <p className="text-gray-400 text-sm">安心してつながり、語り合い、回復できる<br></br>社会をつくる</p>
+              <span className="font-bold">ACEs Care HUB JAPAN</span>
             </div>
+            <p className="text-gray-400 text-sm">安心してつながり、語り合い、回復できる社会をつくる</p>
+          </div>
 
-            <div>
-              <h4 className="font-semibold mb-4">サポート</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>
-                  <Link href="/donation" className="hover:text-white transition-colors">
-                    寄付・サポーター
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/faq" className="hover:text-white transition-colors">
-                    よくある質問
-                  </Link>
-                </li>
-                <li>
-                  <button onClick={() => setChatbotOpen(true)} className="hover:text-white transition-colors">
-                    AI相談チャット
-                  </button>
-                </li>
-                <li>
-                  <Link href="/privacy" className="hover:text-white transition-colors">
-                    プライバシーポリシー
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/legal/tokushoho" className="hover:text-white transition-colors">
-                    特定商取引法に基づく表記
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">SNS</h4>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="https://www.facebook.com/hidetarounosuke"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Facebook
+          <footer id="footer-links" className="mt-8">
+            <ul className="flex flex-wrap gap-3 list-none p-0">
+              <li id="li-news">
+                <a id="link-news" target="_blank" rel="noopener" className="text-gray-400 hover:text-white transition-colors">
+                  Substack
                 </a>
-                <a
-                  href="https://note.com/clean_minnow118"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+              </li>
+              <li id="li-note">
+                <a id="link-note" target="_blank" rel="noopener" className="text-gray-400 hover:text-white transition-colors">
                   note
                 </a>
-                <a
-                  href="https://acescare.fanlink.tv/hidekitamae"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Music & NFT
+              </li>
+              <li id="li-bsky">
+                <a id="link-bsky" target="_blank" rel="noopener" className="text-gray-400 hover:text-white transition-colors">
+                  Bluesky
                 </a>
-              </div>
-            </div>
-          </div>
+              </li>
+              <li className="relative" id="li-nft">
+                <button
+                  id="btn-nft"
+                  aria-expanded="false"
+                  className="border border-gray-600 bg-gray-800 rounded-lg px-2 py-1 text-gray-400 hover:text-white transition-colors"
+                >
+                  NFT
+                </button>
+                <div
+                  className="absolute top-full left-0 hidden flex-col gap-1 border border-gray-600 bg-gray-800 rounded-lg p-2 min-w-[160px] shadow-lg"
+                  id="menu-nft"
+                >
+                  <a id="nft-hexa" target="_blank" rel="noopener" className="text-gray-400 hover:text-white transition-colors p-1">
+                    HEXA
+                  </a>
+                  <a id="nft-opensea" target="_blank" rel="noopener" className="text-gray-400 hover:text-white transition-colors p-1">
+                    OpenSea
+                  </a>
+                  <a id="nft-oncyber" target="_blank" rel="noopener" className="text-gray-400 hover:text-white transition-colors p-1">
+                    Oncyber
+                  </a>
+                </div>
+              </li>
+            </ul>
+
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+    (function waitCfg(){
+      if(!window.APP_CONFIG){ return setTimeout(waitCfg, 40); }
+      const cfg = window.APP_CONFIG;
+      const setOrHide = (liId, aId, url, label) => {
+        const li = document.getElementById(liId), a = document.getElementById(aId);
+        if (!li || !a) return;
+        if (!url) { li.style.display = 'none'; return; }
+        a.href = url; if (label) a.textContent = label;
+      };
+      setOrHide('li-news', 'link-news', cfg.social.substackUrl, 'Substack');
+      setOrHide('li-note','link-note', cfg.social.noteUrl, 'note');
+      setOrHide('li-bsky','link-bsky', cfg.social.bskyUrl, 'Bluesky');
+      const nft = cfg.social.nft || {};
+      const any = nft.hexaUrl || nft.openseaUrl || nft.oncyberUrl;
+      const liNft = document.getElementById('li-nft');
+      const menu  = document.getElementById('menu-nft');
+      const btn   = document.getElementById('btn-nft');
+      if (!any) { liNft.style.display = 'none'; }
+      else {
+        [['nft-hexa',nft.hexaUrl,'HEXA'],['nft-opensea',nft.openseaUrl,'OpenSea'],['nft-oncyber',nft.oncyberUrl,'Oncyber']]
+          .forEach(([id,url,label])=>{ const el=document.getElementById(id); if(el){ if(url){el.href=url;el.textContent=label;}else{el.remove();}}});
+        btn.addEventListener('click',()=>{ const open = btn.getAttribute('aria-expanded')==='true'; btn.setAttribute('aria-expanded', String(!open)); menu.style.display = open?'none':'flex'; });
+        document.addEventListener('click',(e)=>{ if(!liNft.contains(e.target)){ btn.setAttribute('aria-expanded','false'); menu.style.display='none'; }});
+      }
+    })();
+  `,
+              }}
+            />
+          </footer>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
             © 2025 ACEs Care HUB JAPAN | All Rights Reserved.
