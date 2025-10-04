@@ -18,7 +18,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
       {/* Enhanced Header */}
       <EnhancedHeader onChatbotOpen={() =>
-         setChatbotOpen(true)} />
+        <HeroMessage /> setChatbotOpen(true)} />
 
       {/* Hero Section */}
       <section className="py-24 px-4 relative overflow-hidden">
