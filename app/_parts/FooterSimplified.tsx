@@ -1,5 +1,6 @@
-"use client";
-export default function FooterSimplified() {
+import React from "react";
+
+export default function FooterSimplified(): JSX.Element {
   return (
     <footer className="mt-8" id="footer-links">
       <ul className="flex flex-wrap gap-3 list-none p-0">
@@ -8,7 +9,9 @@ export default function FooterSimplified() {
         <li><a href="https://bsky.app/" target="_blank" rel="noopener">Bluesky</a></li>
         <li>
           <details>
-            <summary className="cursor-pointer select-none border border-gray-200 bg-white rounded-lg px-2 py-1">NFT</summary>
+            <summary className="cursor-pointer select-none border border-gray-200 bg-white rounded-lg px-2 py-1">
+              NFT
+            </summary>
             <ul className="mt-2 space-y-1 border border-gray-200 bg-white rounded-lg p-2 shadow">
               <li><a href="https://nft.hexanft.com/users/gdrqieu8SUQLW9" target="_blank" rel="noopener">HEXA</a></li>
               <li><a href="https://opensea.io/ja/collection/project-re-verse" target="_blank" rel="noopener">OpenSea</a></li>
@@ -17,7 +20,6 @@ export default function FooterSimplified() {
           </details>
         </li>
       </ul>
-    </foote
-
-
-</footer>
+    </footer>
+  );
+}
