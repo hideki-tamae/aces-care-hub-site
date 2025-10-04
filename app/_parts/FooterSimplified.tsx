@@ -32,7 +32,6 @@ export default function FooterSimplified(): JSX.Element {
           {/* 外部リンク（Bluesky → note → NFT） */}
           <EPill href="https://bsky.app/">Bluesky</EPill>
           <EPill href="https://note.com/clean_minnow118">note</EPill>
-          <span className="ml-1 mr-1 text-sm text-slate-300">NFT</span>
           <EPill href="https://nft.hexanft.com/users/gdrqieu8SUQLW9">HEXA</EPill>
           <EPill href="https://opensea.io/ja/collection/project-re-verse">OpenSea</EPill>
           <EPill href="https://oncyber.io/spaces/0DCUetEBicRPi0fem1WM?coords=-2.07x2.85x5.14x1.58">Oncyber</EPill>

@@ -1,5 +1,4 @@
 "use client"
-import HeroMessage from "./_parts/HeroMessage";
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -17,8 +16,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
       {/* Enhanced Header */}
-      <EnhancedHeader onChatbotOpen={() =>
-        <HeroMessage /> setChatbotOpen(true)} />
+      <EnhancedHeader onChatbotOpen={() => setChatbotOpen(true)} />
 
       {/* Hero Section */}
       <section className="py-24 px-4 relative overflow-hidden">
