@@ -439,7 +439,7 @@ export default function DonationPage() {
       <footer className="bg-gray-800 text-white py-6">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
-            <p className="text-gray-400">&copy; {new Date().getFullYear()} ACEs Japan Care HUB. All rights reserved.</p>
+            <p className="text-gray-400">&copy; {new Date().getFullYear()} ACEs Care HUB JAPAN. All rights reserved.</p>
             <div className="flex space-x-4">
               <a
                 href="https://www.youtube.com/@ACEsCareHUB2025"

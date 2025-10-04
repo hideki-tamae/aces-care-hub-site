@@ -15,7 +15,7 @@ export default function PrivacyPolicyPage() {
                 <Shield className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-800">ACEs Japan Care HUB🇯🇵</h1>
+                <h1 className="text-xl font-bold text-gray-800">ACEs Care HUB JAPAN</h1>
                 <p className="text-sm text-gray-600">プライバシーポリシー</p>
               </div>
             </Link>
@@ -46,7 +46,7 @@ export default function PrivacyPolicyPage() {
               </CardHeader>
               <CardContent className="prose prose-blue max-w-none">
                 <p className="text-gray-700 leading-relaxed">
-                  ACEs Japan Care HUB（以下「当サービス」）は、ユーザーの皆様の個人情報保護の重要性を認識し、
+                  ACEs Care HUB JAPAN（以下「当サービス」）は、ユーザーの皆様の個人情報保護の重要性を認識し、
                   個人情報の保護に関する法律（個人情報保護法）を遵守し、適切な取り扱いを実施いたします。
                   特に、トラウマインフォームドケアの観点から、ユーザーの安全性とプライバシーを最優先に考えています。
                 </p>
@@ -163,7 +163,7 @@ export default function PrivacyPolicyPage() {
                   以下までご連絡ください：
                 </p>
                 <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-                  <p className="font-semibold text-blue-800">ACEs Japan Care HUB</p>
+                  <p className="font-semibold text-blue-800">ACEs Care HUB JAPAN</p>
                   <p className="text-blue-700">メール：tamatixyan@gmail.com</p>
                   <p className="text-blue-700">対応時間：平日 10:00-18:00</p>
                 </div>

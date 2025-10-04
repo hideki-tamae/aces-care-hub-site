@@ -28,7 +28,7 @@ export default function FAQPage() {
     {
       id: 1,
       category: "サービス全般",
-      question: "ACEs Japan Care HUBとは何ですか？",
+      question: "ACEs Care HUB JAPANとは何ですか？",
       answer:
         "ACEs（逆境の子供期体験）やヤングケアラーとしての背景をもつ人々が、安心してつながり、語り合い、回復できる場を提供するプラットフォームです。AIを活用したケアシステムや、トラウマインフォームドケアに基づいたサポートを提供しています。",
       icon: <HelpCircle className="w-5 h-5 text-blue-500" />,
@@ -120,7 +120,7 @@ export default function FAQPage() {
                 <HelpCircle className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-800">ACEs Japan Care HUB</h1>
+                <h1 className="text-xl font-bold text-gray-800">ACEs Care HUB JAPAN</h1>
                 <p className="text-sm text-gray-600">よくある質問</p>
               </div>
             </Link>
@@ -138,7 +138,7 @@ export default function FAQPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-800 mb-4">よくある質問</h1>
-            <p className="text-gray-600">ACEs Japan Care HUBについてよくお寄せいただくご質問をまとめました</p>
+            <p className="text-gray-600">ACEs Care HUB JAPANについてよくお寄せいただくご質問をまとめました</p>
           </div>
 
           {categories.map((category) => (

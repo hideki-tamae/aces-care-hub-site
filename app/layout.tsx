@@ -1,3 +1,4 @@
+import FooterSimplified from "./_parts/FooterSimplified";
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
@@ -22,7 +23,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <Script src="/config-loader.js" strategy="beforeInteractive" />
         {children}
-      </body>
+        <FooterSimplified />
+</body>
     </html>
   )
 }
