@@ -4,7 +4,6 @@ export default function FooterSimplified(): JSX.Element {
   return (
     <footer className="mt-8" id="footer-links">
       <ul className="flex flex-wrap gap-3 list-none p-0">
-        <li><a href="https://hideki1983.substack.com/" target="_blank" rel="noopener">Substack</a></li>
         <li><a href="https://note.com/clean_minnow118" target="_blank" rel="noopener">note</a></li>
         <li><a href="https://bsky.app/" target="_blank" rel="noopener">Bluesky</a></li>
         <li>
