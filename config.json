@@ -1,0 +1,31 @@
+{
+  "brand": {
+    "orgName": "ACEs Care HUB JAPAN"
+  },
+  "site": {
+    "baseUrl": "https://aces-care-hub-site-ru8w.vercel.app",
+    "topUrl": "/",
+    "pricingUrl": "/#pricing",
+    "privacyUrl": "/privacy",
+    "termsUrl": "/terms",
+    "refundUrl": "/refund",
+    "tokushohoUrl": "/legal/tokushoho",
+    "contactUrl": "/contact"
+  },
+  "social": {
+    "noteUrl": "https://note.com/clean_minnow118",
+    "newsletterProvider": "substack",
+    "substackUrl": "https://hideki1983.substack.com/",
+    "mediumUrl": "",
+    "bskyUrl": "https://bsky.app/",
+    "youtube": {
+      "url": "https://www.youtube.com/@ACEsCareHUBJapan",
+      "enabled": false
+    },
+    "nft": {
+      "hexaUrl": "https://nft.hexanft.com/users/gdrqieu8SUQLW9",
+      "openseaUrl": "https://opensea.io/ja/collection/project-re-verse",
+      "oncyberUrl": "https://oncyber.io/spaces/0DCUetEBicRPi0fem1WM?coords=-2.07x2.85x5.14x1.58"
+    }
+  }
+}

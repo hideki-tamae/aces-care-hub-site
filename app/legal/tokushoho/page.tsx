@@ -47,12 +47,12 @@ export default function TokushohoPage() {
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">ホームページURL</h3>
                     <p className="text-gray-700">
                       <a 
-                        href="https://v0-ace-s-japan-care-hub.vercel.app/" 
+                        href="https://aces-care-hub-site-ru8w.vercel.app/" 
                         className="text-blue-600 hover:text-blue-800 underline"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        https://v0-ace-s-japan-care-hub.vercel.app/
+                        https://aces-care-hub-site-ru8w.vercel.app/
                       </a>
                     </p>
                   </div>

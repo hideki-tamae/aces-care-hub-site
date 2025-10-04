@@ -1,0 +1,174 @@
+【目的】
+Stripe審査前の最終整備を一括適用する。ブランド表記統一、フッター簡素化、特商法URL更新、寄付ページの「決済なし」明記、AI相談ページのプレースホルダー化、必須ポリシーと価格導線の確認まで実施。
+
+【前提】
+- Next.js（/app ルーター、TypeScript）
+- 本番URL： https://aces-care-hub-site-ru8w.vercel.app
+- 問い合わせメール：tamatixyan@gmail.com
+- ブランド表記は **ACEs Care HUB JAPAN** に統一
+
+────────────────────────────────
+1) ルートに config.json を作成/上書き
+
+{
+  "brand": { "orgName": "ACEs Care HUB JAPAN" },
+  "site": {
+    "baseUrl": "https://aces-care-hub-site-ru8w.vercel.app",
+    "topUrl": "/",
+    "pricingUrl": "/#pricing",
+    "privacyUrl": "/privacy",
+    "termsUrl": "/terms",
+    "refundUrl": "/refund",
+    "tokushohoUrl": "/legal/tokushoho",
+    "contactUrl": "/contact"
+  },
+  "social": {
+    "noteUrl": "https://note.com/clean_minnow118",
+    "newsletterProvider": "substack",
+    "substackUrl": "https://hideki1983.substack.com/",
+    "mediumUrl": "",                       // ← 表示しない
+    "bskyUrl": "https://bsky.app/",
+    "youtube": { "url": "https://www.youtube.com/@ACEsCareHUBJapan", "enabled": false }, // 非表示
+    "nft": {
+      "hexaUrl": "https://nft.hexanft.com/users/gdrqieu8SUQLW9",
+      "openseaUrl": "https://opensea.io/ja/collection/project-re-verse",
+      "oncyberUrl": "https://oncyber.io/spaces/0DCUetEBicRPi0fem1WM?coords=-2.07x2.85x5.14x1.58"
+    }
+  }
+}
+
+────────────────────────────────
+2) /public/config-loader.js を作成（なければ）
+（layout.tsx の <body> に読み込みも追加する）
+
+// /public/config-loader.js
+(async () => {
+  try {
+    const res = await fetch('/config.json', { cache: 'no-store' });
+    const cfg = await res.json();
+    const origin = typeof window !== 'undefined' ? window.location.origin : '';
+    if (!cfg.site.baseUrl) cfg.site.baseUrl = origin;
+    window.APP_CONFIG = cfg;
+  } catch (e) { console.error('config load failed', e); }
+})();
+
+app/layout.tsx に以下を追加：
+import Script from "next/script";
+…
+<body>
+  <Script src="/public/config-loader.js" strategy="beforeInteractive" />
+  {children}
+</body>
+
+────────────────────────────────
+3) フッターを4リンクに簡素化（Substack / note / Bluesky / NFT）
+app/page.tsx（もしくは共通フッター）内の <footer>…</footer> を下で置換：
+
+<footer id="footer-links" className="mt-8">
+  <ul className="flex flex-wrap gap-3 list-none p-0">
+    <li id="li-news"><a id="link-news" target="_blank" rel="noopener">Substack</a></li>
+    <li id="li-note"><a id="link-note" target="_blank" rel="noopener">note</a></li>
+    <li id="li-bsky"><a id="link-bsky" target="_blank" rel="noopener">Bluesky</a></li>
+    <li className="relative" id="li-nft">
+      <button id="btn-nft" aria-expanded="false" className="border border-gray-200 bg-white rounded-lg px-2 py-1">NFT</button>
+      <div className="absolute top-full left-0 hidden flex-col gap-1 border border-gray-200 bg-white rounded-lg p-2 min-w-[160px] shadow-lg" id="menu-nft">
+        <a id="nft-hexa" target="_blank" rel="noopener">HEXA</a>
+        <a id="nft-opensea" target="_blank" rel="noopener">OpenSea</a>
+        <a id="nft-oncyber" target="_blank" rel="noopener">Oncyber</a>
+      </div>
+    </li>
+  </ul>
+
+  <script dangerouslySetInnerHTML={{__html: `
+    (function waitCfg(){
+      if(!window.APP_CONFIG){ return setTimeout(waitCfg, 40); }
+      const cfg = window.APP_CONFIG;
+      const setOrHide = (liId, aId, url, label) => {
+        const li = document.getElementById(liId), a = document.getElementById(aId);
+        if (!li || !a) return;
+        if (!url) { li.style.display = 'none'; return; }
+        a.href = url; if (label) a.textContent = label;
+      };
+      setOrHide('li-news', 'link-news', cfg.social.substackUrl, 'Substack');
+      setOrHide('li-note','link-note', cfg.social.noteUrl, 'note');
+      setOrHide('li-bsky','link-bsky', cfg.social.bskyUrl, 'Bluesky');
+      const nft = cfg.social.nft || {};
+      const any = nft.hexaUrl || nft.openseaUrl || nft.oncyberUrl;
+      const liNft = document.getElementById('li-nft');
+      const menu  = document.getElementById('menu-nft');
+      const btn   = document.getElementById('btn-nft');
+      if (!any) { liNft.style.display = 'none'; }
+      else {
+        [['nft-hexa',nft.hexaUrl,'HEXA'],['nft-opensea',nft.openseaUrl,'OpenSea'],['nft-oncyber',nft.oncyberUrl,'Oncyber']]
+          .forEach(([id,url,label])=>{ const el=document.getElementById(id); if(el){ if(url){el.href=url;el.textContent=label;}else{el.remove();}}});
+        btn.addEventListener('click',()=>{ const open = btn.getAttribute('aria-expanded')==='true'; btn.setAttribute('aria-expanded', String(!open)); menu.style.display = open?'none':'flex'; });
+        document.addEventListener('click',(e)=>{ if(!liNft.contains(e.target)){ btn.setAttribute('aria-expanded','false'); menu.style.display='none'; }});
+      }
+    })();
+  `}} />
+</footer>
+
+────────────────────────────────
+4) 特定商取引法ページのURL更新
+app/legal/tokushoho/page.tsx の「ホームページURL」を
+https://aces-care-hub-site-ru8w.vercel.app/ に更新。
+（未作成ならページを作り、他の項目は既存の方針どおりでOK）
+
+────────────────────────────────
+5) 寄付/申込ページ：決済なしの注記を明記
+寄付/申込に該当するページ（例：app/donation/page.tsx）があれば、本文へ以下のブロックを追加：
+
+<div className="rounded-md border border-amber-300 bg-amber-50 p-4 text-sm">
+  <strong>お知らせ：</strong>
+  現在オンライン決済は準備中です。お申し込み内容を送信いただくと、
+  <a className="underline" href="mailto:tamatixyan@gmail.com">tamatixyan@gmail.com</a> より折り返しご連絡いたします。
+  料金の請求はこのページでは一切行われません。
+</div>
+
+（送信ボタンの文言は「送信/相談を申し込む」に。支払い系文言は使わない）
+
+────────────────────────────────
+6) AI相談ページはプレースホルダーで運用
+app/ai/page.tsx を作成/上書き：
+
+export default function Page(){
+  return (
+    <main className="prose mx-auto p-6">
+      <h1>AI相談（ベータ）</h1>
+      <p>現在は無料で試せる外部チャットをご案内しています。</p>
+      <ul>
+        <li><a className="underline" href="https://huggingface.co/chat" target="_blank" rel="noopener">Hugging Face Chat を開く</a></li>
+      </ul>
+      <p>※将来的にブラウザ内で動くWebLLMを導入予定です。</p>
+    </main>
+  );
+}
+
+（自動応答はまだ実装しない＝Stripe審査には十分）
+
+────────────────────────────────
+7) 表記統一（全ファイル一括置換）
+- 「ACEs Japan Care HUB🇯🇵」「ACEs Japan Car HUB」「ACEs Japan Car(e) HUB」等の表記を
+  **ACEs Care HUB JAPAN** に統一。
+- 連絡先メールは **tamatixyan@gmail.com** に統一。
+
+────────────────────────────────
+8) 価格アンカーと必須ページ確認
+- トップの料金表セクションに id="pricing" が無い場合は付与。
+- /terms と /refund が無ければ最小ページを作成（要旨＋問い合わせ先で可）。
+- /privacy /legal/tokushoho /contact を含め、各リンクが 200 で開くことを確認。
+
+────────────────────────────────
+9) 変更をコミットしてGitHubへ、Vercelを本番に
+- git add -A
+- git commit -m "feat: pre-Stripe polish (brand unify, footer 4 links, tokushoho URL, donation notice, AI placeholder)"
+- git push
+- Vercelが自動デプロイ → 最新 main を Production に Promote
+- 反映後、ブラウザを Shift+再読み込みして各URLを確認
+
+【完了条件】
+- フッターが「Substack / note / Bluesky / NFT」の4リンクのみ
+- /legal/tokushoho のホームページURLが Vercel本番
+- 寄付ページに「決済なし」注記
+- /ai がプレースホルダー表示
+- 表記が「ACEs Care HUB JAPAN」に統一
