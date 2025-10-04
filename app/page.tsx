@@ -390,7 +390,7 @@ export default function HomePage() {
                 </div>
                 <span className="font-bold">ACEs Care HUB Japan</span>
               </div>
-              <p className="text-gray-400 text-sm">安心してつながり、語り合い、回復できる社会をつくる</p>
+              <p className="text-gray-400 text-sm">安心してつながり、語り合い、回復できる<br></br>社会をつくる</p>
             </div>
 
             <div>
